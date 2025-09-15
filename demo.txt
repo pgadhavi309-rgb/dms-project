@@ -1,3 +1,0 @@
-Python is powerful.
-I am learning file handling.
-Himu is my sweet teacher.
