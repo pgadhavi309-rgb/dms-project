@@ -1,6 +1,6 @@
 # backend/tests/test_users_documents.py
-from backend.models.documents import WordDocument, PDFDocument, ImageDocument
-from backend.models.users import User, AdminUser
+from backend.model.documents import WordDocument, PDFDocument, ImageDocument
+from backend.model.users import User, AdminUser
 
 def test_flow():
     user = User("pragnesh", "pragnesh@mail.com", "111111")

@@ -1,4 +1,4 @@
-from backend.models.documents import WordDocument, PDFDocument, ImageDocument
+from backend.model.documents import WordDocument, PDFDocument, ImageDocument
 
 def test_documents():
     word = WordDocument("report.docx", "Project Report", "Pragnesh")

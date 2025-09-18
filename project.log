@@ -1,0 +1,58 @@
+2025-09-18 17:44:15,630 - INFO - dms_project - Calling: ProjectMember.get_role args=('Developer',) kwargs={}
+2025-09-18 17:44:15,631 - INFO - dms_project - Finished: ProjectMember.get_role result='Pragnesh is a Developer' elapsed=0.0000s
+2025-09-18 17:44:15,631 - INFO - dms_project - Calling: Document.create args=('New Content',) kwargs={}
+2025-09-18 17:44:15,631 - INFO - dms_project - Finished: Document.create result="Error creating file Python: [WinError 3] The system cannot find the path specified: ''" elapsed=0.0001s
+2025-09-18 17:44:15,632 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-18 17:44:15,633 - INFO - dms_project - Finished: Document.read result='Extra line added' elapsed=0.0007s
+2025-09-18 17:44:15,634 - INFO - dms_project - Calling: Document.append args=('Extra line added',) kwargs={}
+2025-09-18 17:44:15,635 - INFO - dms_project - Finished: Document.append result='Python me content successfully append ho gaya hai.' elapsed=0.0007s
+2025-09-18 17:44:15,635 - INFO - dms_project - Calling: Document.info args=() kwargs={}
+2025-09-18 17:44:15,635 - INFO - dms_project - Finished: Document.info result={'filename': 'Python', 'title': 'I learn Python programming', 'author': None} elapsed=0.0000s
+2025-09-18 17:54:33,605 - INFO - dms_project - Calling: ProjectMember.get_role args=('Developer',) kwargs={}
+2025-09-18 17:54:33,609 - INFO - dms_project - Finished: ProjectMember.get_role result='Pragnesh is a Developer' elapsed=0.0000s
+2025-09-18 17:54:33,610 - INFO - dms_project - Calling: Document.create args=('Hello Himu!',) kwargs={}
+2025-09-18 17:54:33,610 - INFO - dms_project - Finished: Document.create result="Error creating file Python.txt: [WinError 3] The system cannot find the path specified: ''" elapsed=0.0001s
+2025-09-18 17:54:33,612 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-18 17:54:33,612 - INFO - dms_project - Finished: Document.read result='Python.txt does not exist.' elapsed=0.0001s
+2025-09-18 17:54:33,613 - INFO - dms_project - Calling: Document.append args=('Extra line added',) kwargs={}
+2025-09-18 17:54:33,662 - INFO - dms_project - Finished: Document.append result='Python.txt me content successfully append ho gaya hai.' elapsed=0.0492s
+2025-09-18 17:54:33,664 - INFO - dms_project - Calling: Document.update args=('New content',) kwargs={}
+2025-09-18 17:54:33,670 - INFO - dms_project - Finished: Document.update result='Python.txt me naya content likh diya gaya hai.' elapsed=0.0061s
+2025-09-18 17:54:33,683 - INFO - dms_project - Calling: Document.info args=() kwargs={}
+2025-09-18 17:54:33,683 - INFO - dms_project - Finished: Document.info result={'filename': 'Python.txt', 'title': 'I learn Python programming', 'author': 'Pragnesh'} elapsed=0.0000s
+2025-09-18 17:54:33,684 - INFO - dms_project - Calling: Document.delete args=() kwargs={}
+2025-09-18 17:54:33,705 - INFO - dms_project - Finished: Document.delete result='Python.txt successfully delete ho gayi hai.' elapsed=0.0203s
+2025-09-18 17:57:03,750 - INFO - dms_project - Calling: Document.create args=('Hello Himu!',) kwargs={}
+2025-09-18 17:57:03,752 - INFO - dms_project - Finished: Document.create result='backend/files/Python.txt successfully created.' elapsed=0.0014s
+2025-09-18 17:57:03,752 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-18 17:57:03,769 - INFO - dms_project - Finished: Document.read result='Hello Himu!' elapsed=0.0170s
+2025-09-18 17:57:03,771 - INFO - dms_project - Calling: Document.append args=('Extra line added',) kwargs={}
+2025-09-18 17:57:03,773 - INFO - dms_project - Finished: Document.append result='backend/files/Python.txt me content successfully append ho gaya hai.' elapsed=0.0010s
+2025-09-18 17:57:03,773 - INFO - dms_project - Calling: Document.update args=('New content',) kwargs={}
+2025-09-18 17:57:03,775 - INFO - dms_project - Finished: Document.update result='backend/files/Python.txt me naya content likh diya gaya hai.' elapsed=0.0019s
+2025-09-18 17:57:03,780 - INFO - dms_project - Calling: Document.info args=() kwargs={}
+2025-09-18 17:57:03,781 - INFO - dms_project - Finished: Document.info result={'filename': 'backend/files/Python.txt', 'title': 'I learn Python programming', 'author': 'Pragnesh'} elapsed=0.0000s
+2025-09-18 17:57:03,781 - INFO - dms_project - Calling: Document.delete args=() kwargs={}
+2025-09-18 17:57:03,782 - INFO - dms_project - Finished: Document.delete result='backend/files/Python.txt successfully delete ho gayi hai.' elapsed=0.0004s
+2025-09-18 18:01:56,345 - INFO - dms_project - Calling: Document.create args=('Hello Himu!',) kwargs={}
+2025-09-18 18:01:56,346 - INFO - dms_project - Finished: Document.create result='backend/files/Python.txt successfully created.' elapsed=0.0010s
+2025-09-18 18:01:56,348 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-18 18:01:56,350 - INFO - dms_project - Finished: Document.read result='Hello Himu!' elapsed=0.0010s
+2025-09-18 18:01:56,351 - INFO - dms_project - Calling: Document.append args=('Extra line added',) kwargs={}
+2025-09-18 18:01:56,352 - INFO - dms_project - Finished: Document.append result='backend/files/Python.txt me content successfully append ho gaya hai.' elapsed=0.0008s
+2025-09-18 18:01:56,353 - INFO - dms_project - Calling: Document.update args=('New content',) kwargs={}
+2025-09-18 18:01:56,369 - INFO - dms_project - Finished: Document.update result='backend/files/Python.txt me naya content likh diya gaya hai.' elapsed=0.0154s
+2025-09-18 18:01:56,370 - INFO - dms_project - Calling: Document.info args=() kwargs={}
+2025-09-18 18:01:56,371 - INFO - dms_project - Finished: Document.info result={'filename': 'backend/files/Python.txt', 'title': 'I learn Python programming', 'author': 'Pragnesh'} elapsed=0.0000s
+2025-09-18 18:01:56,375 - INFO - dms_project - Calling: Document.delete args=() kwargs={}
+2025-09-18 18:01:56,378 - INFO - dms_project - Finished: Document.delete result='backend/files/Python.txt successfully delete ho gayi hai.' elapsed=0.0011s
+2025-09-18 18:03:02,718 - INFO - dms_project - Calling: ProjectMember.get_role args=('Team Lead',) kwargs={}
+2025-09-18 18:03:02,719 - INFO - dms_project - Finished: ProjectMember.get_role result='Pragnesh is a Team Lead' elapsed=0.0000s
+2025-09-18 18:03:02,720 - INFO - dms_project - Calling: Developer.get_role args=('Developer',) kwargs={}
+2025-09-18 18:03:02,721 - INFO - dms_project - Finished: Developer.get_role result='Chirag is a Developer' elapsed=0.0000s
+2025-09-18 18:03:02,724 - INFO - dms_project - Calling: Developer.code args=('Python',) kwargs={}
+2025-09-18 18:03:02,725 - INFO - dms_project - Finished: Developer.code result='Chirag is coding in Python' elapsed=0.0000s
+2025-09-18 18:03:02,727 - INFO - dms_project - Calling: Tester.get_role args=('Tester',) kwargs={}
+2025-09-18 18:03:02,728 - INFO - dms_project - Finished: Tester.get_role result='Riya is a Tester' elapsed=0.0000s
+2025-09-18 18:03:02,730 - INFO - dms_project - Calling: Tester.test args=('Selenium',) kwargs={}
+2025-09-18 18:03:02,731 - INFO - dms_project - Finished: Tester.test result='Riya is testing using Selenium' elapsed=0.0000s

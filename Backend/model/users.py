@@ -1,6 +1,6 @@
 # backend/users.py
 from typing import List, Optional
-from backend.models.documents import Document
+from backend.model.documents import Document
 from backend.helpers.security_helpers import hash_password
 
 class User:

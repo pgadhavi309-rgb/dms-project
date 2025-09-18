@@ -2,7 +2,7 @@ import sys, os
 # project root ko path me add karna (har baar cd karne ki need nahi)
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from backend.models import Document
+from backend.model import Document
 
 # Document object create
 d1 = Document("demo.txt", title="Demo File", author="Pragnesh")

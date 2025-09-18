@@ -1,49 +1,48 @@
 from backend.helpers.file_helpers import create_file, read_file, write_file, append_file, delete_file
+from backend.helpers.logging_decorator import log_method
 
 class Document:
     def __init__(self, filename, title=None, author=None):
-        self.filename = filename      # file ka naam (required)
-        self.title = title            # document title (optional)
-        self.author = author          # document author (optional)
+        self.filename = filename
+        self.title = title
+        self.author = author
 
+    @log_method
     def create(self, content=""):
-        """Nayi file create kare with optional content"""
         return create_file(self.filename, content)
 
+    @log_method
     def read(self):
-        """File ka content read kare"""
         return read_file(self.filename)
 
+    @log_method
     def update(self, content):
-        """File ka purana content replace kare"""
         return write_file(self.filename, content)
 
+    @log_method
     def append(self, content):
-        """File me extra content add kare"""
         return append_file(self.filename, content)
 
+    @log_method
     def delete(self):
-        """File ko delete kare"""
         return delete_file(self.filename)
 
+    @log_method
     def info(self):
-        """Document ka basic info show kare"""
-        print(f"Filename: {self.filename}")
-        if self.title:
-            print(f"Title: {self.title}")
-        if self.author:
-            print(f"Author: {self.author}")
+        return {"filename": self.filename, "title": self.title, "author": self.author}
 
 
-# 👇 yeh neeche extension classes hai
 class WordDocument(Document):
+    @log_method
     def open(self):
         return f"Opening Word document: {self.filename}"
 
 class PDFDocument(Document):
+    @log_method
     def open(self):
         return f"Opening PDF document: {self.filename}"
 
 class ImageDocument(Document):
+    @log_method
     def open(self):
         return f"Opening Image document: {self.filename}"

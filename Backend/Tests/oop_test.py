@@ -1,4 +1,4 @@
-from backend.models import Document
+from backend.model import Document
 
 doc = Document("demo.txt")
 
