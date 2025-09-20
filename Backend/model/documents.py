@@ -32,6 +32,7 @@ class Document:
         return {"filename": self.filename, "title": self.title, "author": self.author}
 
 
+# Specific document types
 class WordDocument(Document):
     @log_method
     def open(self):

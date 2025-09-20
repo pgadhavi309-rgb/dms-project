@@ -56,3 +56,51 @@
 2025-09-18 18:03:02,728 - INFO - dms_project - Finished: Tester.get_role result='Riya is a Tester' elapsed=0.0000s
 2025-09-18 18:03:02,730 - INFO - dms_project - Calling: Tester.test args=('Selenium',) kwargs={}
 2025-09-18 18:03:02,731 - INFO - dms_project - Finished: Tester.test result='Riya is testing using Selenium' elapsed=0.0000s
+2025-09-19 17:03:46,062 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:03:46,063 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-19 17:03:46,065 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:03:46,066 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0003s
+2025-09-19 17:03:46,067 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:03:46,068 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-19 17:03:46,068 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:03:46,069 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
+2025-09-19 17:05:36,491 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:05:36,492 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-19 17:05:36,493 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:05:36,494 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0001s
+2025-09-19 17:05:36,494 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:05:36,494 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-19 17:05:36,494 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-19 17:05:36,494 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:33,543 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:33,545 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:33,565 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:33,566 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:33,568 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:33,569 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-20 10:45:33,570 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:33,570 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,231 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,232 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,245 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,246 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,247 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,259 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,259 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,260 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,627 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,628 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,628 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,630 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,630 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,631 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-20 10:45:34,631 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:34,632 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:37,603 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:37,604 - INFO - dms_project - Finished: Document.read result='files/Python.txt does not exist.' elapsed=0.0001s
+2025-09-20 10:45:37,605 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:37,607 - INFO - dms_project - Finished: Document.read result='files/Geeta.txt does not exist.' elapsed=0.0009s
+2025-09-20 10:45:37,607 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:37,608 - INFO - dms_project - Finished: Document.read result='files/Report.docx does not exist.' elapsed=0.0001s
+2025-09-20 10:45:37,608 - INFO - dms_project - Calling: Document.read args=() kwargs={}
+2025-09-20 10:45:37,609 - INFO - dms_project - Finished: Document.read result='files/Notes.txt does not exist.' elapsed=0.0001s
