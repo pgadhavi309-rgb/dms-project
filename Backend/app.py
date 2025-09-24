@@ -1,52 +1,37 @@
-from utils import hash_password
+from flask import Flask, render_template, request, redirect, url_for, flash
+import os
 
-user_password = input("Enter your password: ")
-print("Hashed Password:", hash_password(user_password))
+# Absolute paths for templates and static folders
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # backend folder path
+TEMPLATE_DIR = os.path.join(BASE_DIR, '..', 'Frontend', 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, '..', 'Frontend', 'static')
 
+app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
+app.secret_key = "mysecretkey"
 
+# Dummy user credentials
+USER_CREDENTIALS = {
+    "pragnesh": "12345"
+}
 
-from utils import square, cube
+@app.route('/')
+def home():
+    return redirect(url_for('login'))
 
-print("Square of 5:", square(5))
-print("Cube of 3:", cube(3))
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+            return render_template('dashboard.html', username=username)
+        else:
+            flash("Invalid username or password!", "error")
+            return redirect(url_for('login'))
+    return render_template('login.html')
 
-test_utils.py
-
-from utils import *
-
-print("===== Math Helper Functions Test =====")
-print("Square of 5:", square(5))
-print("Cube of 3:", cube(3))
-print("Factorial of 5:", factorial(5))
-print("Square root of 16:", square_root(16))
-print("2^3 =", power(2, 3))
-print("Absolute value of -10:", absolute(-10))
-print("Sine 30°:", sine(30))
-print("Cosine 60°:", cosine(60))
-print("Tangent 45°:", tangent(45))
-print("Random integer between 1 and 10:", random_int(1, 10))
-
-print("\n===== File Helper Functions Test =====")
-file_name = "test_file.txt"
-
-# Create
-create_file(file_name, "Hello World!\n")
-
-# Read
-print("File content after create:")
-print(read_file(file_name))
-
-# Append
-append_file(file_name, "Ye ek aur line add ho gayi!\n")
-print("File content after append:")
-print(read_file(file_name))
-
-# Write (overwrite)
-write_file(file_name, "Ye purana content replace kar diya.\n")
-print("File content after write:")
-print(read_file(file_name))
-
-# Delete
-delete_file(file_name)
-print("File content after delete (should give message):")
-print(read_file(file_name))
+if __name__ == '__main__':
+    # Debug prints to verify paths
+    print("Templates folder:", TEMPLATE_DIR)
+    print("Static folder:", STATIC_DIR)
+    app.run(debug=True)

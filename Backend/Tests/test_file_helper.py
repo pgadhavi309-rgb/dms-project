@@ -1,43 +1,32 @@
-# tests/test_file_helpers.py
-from helpers.file_helpers import (
-    create_file,
-    read_file,
-    write_file,
-    append_file,
-    delete_file
-)
+from backend.helpers.file_helpers import *
 
-def run_tests():
-    file_name = "demo.txt"
+# ---------------- Test Folders ----------------
+ensure_folder("backend/files")
+ensure_folder("backend/backup")
+ensure_folder("backend/archive")
 
-    # 1. Create file
-    create_file(file_name, "Hello, this is the first line.\n")
+# ---------------- Test Files ----------------
+create_file("backend/files/test1.txt", "Hello Himu!")
+create_file("backend/files/test2.txt", "Python Project Test")
 
-    # 2. Read file
-    print("File Content (after create):")
-    print(read_file(file_name))
+append_to_file("backend/files/test1.txt", "Second line added.")
+overwrite_file("backend/files/test2.txt", "This content is overwritten.")
 
-    # 3. Write (overwrite) file
-    write_file(file_name, "This content replaced the old one.\n")
+# ---------------- List Files ----------------
+print("\nListing all files with sizes in 'backend/files':")
+list_files_with_sizes("backend/files")
 
-    # 4. Read file again
-    print("File Content (after write):")
-    print(read_file(file_name))
+# ---------------- Metadata ----------------
+print("\nMetadata for test1.txt:")
+file_metadata("backend/files/test1.txt")
 
-    # 5. Append new content
-    append_file(file_name, "This line is appended.\n")
+# ---------------- Backup & Archive ----------------
+backup_file("backend/files/test1.txt")
+copy_file_to_backup("backend/files/test2.txt")
+move_file_to_archive("backend/files/test1.txt")
 
-    # 6. Read file again
-    print("File Content (after append):")
-    print(read_file(file_name))
+# ---------------- File Info ----------------
+info = get_file_info("backend/files/test2.txt")
+print("\nFile Info dict:", info)
 
-    # 7. Delete file
-    delete_file(file_name)
-
-    # 8. Try to read deleted file
-    print("File Content (after delete):")
-    print(read_file(file_name))
-
-
-if __name__ == "__main__":
-    run_tests()
+print("\nAll ultimate file_helpers functions tested successfully!")

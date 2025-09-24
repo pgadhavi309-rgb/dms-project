@@ -1,4 +1,3 @@
-Python is fun
-I enjoy coding
-Himu is my best teacher
-Learning never stop
+Line 1: Learning Python
+Line 2: Context Managers
+Line 3: Easy and Clean Code
