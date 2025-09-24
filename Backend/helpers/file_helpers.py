@@ -4,71 +4,76 @@ from datetime import datetime
 
 # ---------------- Basic File Helpers ----------------
 
-def ensure_folder(folder_path):
+def ensure_folder(folder_path: str) -> str:
+    """Ensure that the given folder exists, create if not."""
     folder_path = os.path.abspath(folder_path)
     if not os.path.exists(folder_path):
         os.makedirs(folder_path, exist_ok=True)
-        print(f"{folder_path} folder create kar diya gaya.")
-    else:
-        print(f"{folder_path} already exist karta hai.")
     return folder_path
 
-def create_file(filepath, content=""):
+def create_file(filepath: str, content: str = "") -> str:
+    """Create a new file with the given content."""
     folder = os.path.dirname(filepath)
     if folder:
         ensure_folder(folder)
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"{filepath} successfully created.")
+    return f"{filepath} created successfully."
 
-def append_to_file(filepath, content):
+def append_to_file(filepath: str, content: str) -> str:
+    """Append content to an existing file."""
     with open(filepath, "a", encoding="utf-8") as f:
         f.write("\n" + content)
-    print(f"{filepath} me content successfully append ho gaya hai.")
+    return f"Content appended to {filepath}."
 
-def overwrite_file(filepath, content):
+def overwrite_file(filepath: str, content: str) -> str:
+    """Overwrite file content with new data."""
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"{filepath} me naya content likh diya gaya.")
+    return f"{filepath} overwritten with new content."
 
-def delete_file(filepath):
+def delete_file(filepath: str) -> str:
+    """Delete a file if it exists."""
     if os.path.exists(filepath):
         os.remove(filepath)
-        print(f"{filepath} successfully deleted.")
-    else:
-        print(f"{filepath} exist nahi karta.")
+        return f"{filepath} deleted successfully."
+    return f"{filepath} does not exist."
 
-def delete_folder(folderpath):
+def delete_folder(folderpath: str) -> str:
+    """Delete a folder and all its contents."""
     if os.path.exists(folderpath):
         shutil.rmtree(folderpath)
-        print(f"{folderpath} folder aur uske sabhi files delete ho gaye.")
-    else:
-        print(f"{folderpath} exist nahi karta.")
+        return f"{folderpath} and its contents deleted."
+    return f"{folderpath} does not exist."
 
-def list_files_with_sizes(folderpath):
-    if os.path.exists(folderpath):
-        files = os.listdir(folderpath)
-        for f in files:
-            filepath = os.path.join(folderpath, f)
-            if os.path.isfile(filepath):
-                size = os.path.getsize(filepath)
-                print(f"{f} - {size} bytes")
-    else:
-        print(f"{folderpath} exist nahi karta.")
+def list_files_with_sizes(folderpath: str) -> list:
+    """List files in a folder with their sizes in bytes."""
+    if not os.path.exists(folderpath):
+        return [f"{folderpath} does not exist."]
+    file_list = []
+    for f in os.listdir(folderpath):
+        filepath = os.path.join(folderpath, f)
+        if os.path.isfile(filepath):
+            size = os.path.getsize(filepath)
+            file_list.append(f"{f} - {size} bytes")
+    return file_list
 
-def file_metadata(filepath):
-    if os.path.exists(filepath):
-        stats = os.stat(filepath)
-        print(f"📄 Metadata for: {filepath}")
-        print(f"   Size: {stats.st_size} bytes")
-        print(f"   Last Modified: {datetime.fromtimestamp(stats.st_mtime)}")
-        print(f"   Created: {datetime.fromtimestamp(stats.st_ctime)}")
-    else:
-        print(f"{filepath} exist nahi karta.")
+def file_metadata(filepath: str) -> dict | str:
+    """Return file metadata including size and timestamps."""
+    if not os.path.exists(filepath):
+        return f"{filepath} does not exist."
+    stats = os.stat(filepath)
+    return {
+        "path": filepath,
+        "size_bytes": stats.st_size,
+        "last_modified": datetime.fromtimestamp(stats.st_mtime),
+        "created": datetime.fromtimestamp(stats.st_ctime)
+    }
 
 # ---------------- Advanced Helpers ----------------
 
-def backup_file(src, dest_folder="backend/backup"):
+def backup_file(src: str, dest_folder: str = "backend/backup") -> str:
+    """Create a timestamped backup of a file in the backup folder."""
     if not os.path.exists(src):
         return f"{src} does not exist."
     dest_folder = ensure_folder(dest_folder)
@@ -77,10 +82,10 @@ def backup_file(src, dest_folder="backend/backup"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     dest_file = os.path.join(dest_folder, f"{name}_{timestamp}{ext}")
     shutil.copy2(src, dest_file)
-    print(f"Backup created: {dest_file}")
-    return dest_file
+    return f"Backup created at {dest_file}"
 
-def get_file_info(filepath):
+def get_file_info(filepath: str) -> dict | str:
+    """Return basic file info (path, size, last modified)."""
     if not os.path.exists(filepath):
         return f"{filepath} does not exist."
     size = os.path.getsize(filepath)
@@ -94,7 +99,8 @@ def get_file_info(filepath):
 
 # ---------------- File Organize Helpers ----------------
 
-def move_file_to_archive(src_file, archive_folder="backend/archive"):
+def move_file_to_archive(src_file: str, archive_folder: str = "backend/archive") -> str:
+    """Move a file to the archive folder with timestamp."""
     if not os.path.exists(src_file):
         return f"{src_file} does not exist."
     archive_folder = ensure_folder(archive_folder)
@@ -103,10 +109,10 @@ def move_file_to_archive(src_file, archive_folder="backend/archive"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     dest_file = os.path.join(archive_folder, f"{name}_{timestamp}{ext}")
     shutil.move(src_file, dest_file)
-    print(f"{src_file} moved to {dest_file}")
-    return dest_file
+    return f"{src_file} moved to {dest_file}"
 
-def copy_file_to_backup(src_file, backup_folder="backend/backup"):
+def copy_file_to_backup(src_file: str, backup_folder: str = "backend/backup") -> str:
+    """Copy a file to the backup folder with timestamp."""
     if not os.path.exists(src_file):
         return f"{src_file} does not exist."
     backup_folder = ensure_folder(backup_folder)
@@ -115,5 +121,4 @@ def copy_file_to_backup(src_file, backup_folder="backend/backup"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     dest_file = os.path.join(backup_folder, f"{name}_{timestamp}{ext}")
     shutil.copy2(src_file, dest_file)
-    print(f"{src_file} copied to {dest_file}")
-    return dest_file
+    return f"{src_file} copied to {dest_file}"
