@@ -1,4 +1,4 @@
-from model.documents import Document
+from models.documents import Document
 from iterators.document_iterator import (
     DocumentIterator,
     ReverseDocumentIterator,

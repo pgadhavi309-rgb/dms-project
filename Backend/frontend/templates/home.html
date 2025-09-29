@@ -1,19 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Home Page{% endblock %}
 
 {% block content %}
-<h2>Welcome, {{ name }}!</h2>
-
-<h3>Your Favorite Items:</h3>
-<ul>
-{% for item in items %}
-    <li>{{ item }}</li>
-{% endfor %}
-</ul>
-
-{% if items %}
-<p>You have {{ items|length }} favorite items.</p>
-{% else %}
-<p>You have no favorite items.</p>
-{% endif %}
+<h2>Welcome to Home Page</h2>
+<p>This is the home page of your DMS project.</p>
 {% endblock %}

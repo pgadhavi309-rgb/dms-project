@@ -1,27 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask
+from models import db
+from models.member import Member
 import os
 
-# Templates folder path
-base_dir = os.path.dirname(os.path.abspath(__file__))
-template_dir = os.path.join(base_dir, "Frontend", "templates")
+app = Flask(__name__)
 
-app = Flask(__name__, template_folder=template_dir)
+# Correct absolute path for database
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(BASE_DIR, '../database/dms.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Home Route
-@app.route("/")
+# Initialize database
+db.init_app(app)
+
+# Basic route
+@app.route('/')
 def home():
-    items = ["Book", "Laptop", "Phone"]  # Example list for loop
-    return render_template("home.html", name="Pragnesh", items=items)
-
-# About Route
-@app.route("/about")
-def about():
-    return render_template("about.html", page_title="About Page")
-
-# Dynamic User Route (Optional)
-@app.route("/user/<username>")
-def user_page(username):
-    return render_template("home.html", name=username, items=[])
+    return "Hello, DMS Project!"
 
 if __name__ == "__main__":
     app.run(debug=True)
