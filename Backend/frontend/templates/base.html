@@ -2,21 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+    <title>{% block title %}DMS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <header>
-        <h1>My DMS Project</h1>
-        <nav>
-            <a href="{{ url_for('main.home') }}">Home</a> |
-            <a href="{{ url_for('main.login') }}">Login</a>
-        </nav>
-        <hr>
-    </header>
-
-    {% block content %}{% endblock %}
-
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('documents') }}">Documents</a>
+            <a href="{{ url_for('upload') }}">Upload</a>
+            <span>{{ current_user.username }} ({{ current_user.role }})</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

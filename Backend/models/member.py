@@ -1,10 +1,11 @@
-from . import db  # Import db object from __init__.py
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 class Member(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    role = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
         return f"<Member {self.name}>"

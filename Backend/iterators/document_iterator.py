@@ -1,4 +1,4 @@
-from model.documents import Document
+from models.documents import Document
 
 class DocumentIterator:
     def __init__(self, documents):

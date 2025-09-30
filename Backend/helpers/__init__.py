@@ -1,13 +1,8 @@
-# helpers/__init__.py
-"""Helpers package initializer.
+import os
 
-Usage examples:
-    import helpers
-    from helpers import math_helpers, file_helpers
-    from helpers.math_helpers import square
-"""
+def ensure_folder(folder):
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
-# Make submodules available when package is imported
-from . import math_helpers, file_helpers, security_helpers
-
-__all__ = ["math_helpers", "file_helpers", "security_helpers"]
+def allowed_file(filename, allowed_types):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_types
