@@ -221,3 +221,242 @@
 2025-09-30 16:27:42,950 - INFO - 127.0.0.1 - - [30/Sep/2025 16:27:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2025-09-30 16:27:45,643 - INFO - 127.0.0.1 - - [30/Sep/2025 16:27:45] "GET / HTTP/1.1" 200 -
 2025-09-30 16:27:45,677 - INFO - 127.0.0.1 - - [30/Sep/2025 16:27:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:50:34,893 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 16:50:34,894 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:50:34,900 - INFO -  * Restarting with stat
+2025-09-30 16:50:36,887 - WARNING -  * Debugger is active!
+2025-09-30 16:50:36,894 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 16:50:37,229 - INFO - 127.0.0.1 - - [30/Sep/2025 16:50:37] "GET / HTTP/1.1" 200 -
+2025-09-30 16:50:37,268 - INFO - 127.0.0.1 - - [30/Sep/2025 16:50:37] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-09-30 16:51:05,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 16:51:05,358 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:51:05,361 - INFO -  * Restarting with stat
+2025-09-30 16:51:07,173 - WARNING -  * Debugger is active!
+2025-09-30 16:51:07,179 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 16:51:07,461 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:07] "GET / HTTP/1.1" 200 -
+2025-09-30 16:51:07,679 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:07] "GET /css/style.css HTTP/1.1" 200 -
+2025-09-30 16:51:12,691 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:12] "GET /documents HTTP/1.1" 200 -
+2025-09-30 16:51:12,720 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:12] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:15,176 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:15] "GET / HTTP/1.1" 200 -
+2025-09-30 16:51:15,214 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:15] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:17,197 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:17] "GET /reset-password HTTP/1.1" 200 -
+2025-09-30 16:51:17,233 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:17] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:18,559 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:18] "GET / HTTP/1.1" 200 -
+2025-09-30 16:51:18,594 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:18] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:20,242 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:20] "GET /upload HTTP/1.1" 200 -
+2025-09-30 16:51:20,271 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:20] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:22,212 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:22] "GET /documents HTTP/1.1" 200 -
+2025-09-30 16:51:22,245 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:22] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:23,432 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:23] "GET /upload HTTP/1.1" 200 -
+2025-09-30 16:51:23,465 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:23] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:51:25,622 - INFO - User logged out: Pragnesh
+2025-09-30 16:51:25,623 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-30 16:51:25,639 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:25] "GET / HTTP/1.1" 200 -
+2025-09-30 16:51:25,672 - INFO - 127.0.0.1 - - [30/Sep/2025 16:51:25] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:53:35,857 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 16:53:35,858 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:53:35,862 - INFO -  * Restarting with stat
+2025-09-30 16:53:37,888 - WARNING -  * Debugger is active!
+2025-09-30 16:53:37,897 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 16:53:38,217 - INFO - 127.0.0.1 - - [30/Sep/2025 16:53:38] "GET / HTTP/1.1" 200 -
+2025-09-30 16:53:38,254 - INFO - 127.0.0.1 - - [30/Sep/2025 16:53:38] "[33mGET /css/css/style.css HTTP/1.1[0m" 404 -
+2025-09-30 16:54:04,050 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 16:54:04,051 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:54:04,056 - INFO -  * Restarting with stat
+2025-09-30 16:54:05,974 - WARNING -  * Debugger is active!
+2025-09-30 16:54:05,980 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 16:54:06,278 - INFO - 127.0.0.1 - - [30/Sep/2025 16:54:06] "GET / HTTP/1.1" 200 -
+2025-09-30 16:54:06,505 - INFO - 127.0.0.1 - - [30/Sep/2025 16:54:06] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 16:58:22,557 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 16:58:22,558 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:58:22,561 - INFO -  * Restarting with stat
+2025-09-30 16:58:24,252 - WARNING -  * Debugger is active!
+2025-09-30 16:58:24,258 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 16:58:24,545 - INFO - 127.0.0.1 - - [30/Sep/2025 16:58:24] "GET / HTTP/1.1" 200 -
+2025-09-30 16:58:24,584 - INFO - 127.0.0.1 - - [30/Sep/2025 16:58:24] "[33mGET /css/css/style.css HTTP/1.1[0m" 404 -
+2025-09-30 17:02:12,756 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:02:12,757 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:02:12,762 - INFO -  * Restarting with stat
+2025-09-30 17:02:14,564 - WARNING -  * Debugger is active!
+2025-09-30 17:02:14,572 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:02:14,875 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:14] "GET / HTTP/1.1" 200 -
+2025-09-30 17:02:15,114 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:15] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-09-30 17:02:17,549 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:17] "GET /login HTTP/1.1" 200 -
+2025-09-30 17:02:17,581 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:02:18,830 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:18] "GET / HTTP/1.1" 200 -
+2025-09-30 17:02:18,865 - INFO - 127.0.0.1 - - [30/Sep/2025 17:02:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:14:30,711 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:14:30,713 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:14:30,715 - INFO -  * Restarting with stat
+2025-09-30 17:14:32,577 - WARNING -  * Debugger is active!
+2025-09-30 17:14:32,583 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:14:32,874 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:32] "GET / HTTP/1.1" 200 -
+2025-09-30 17:14:33,091 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:14:38,277 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:38] "GET /login HTTP/1.1" 200 -
+2025-09-30 17:14:38,309 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:14:46,835 - INFO - User logged in: Pragnesh
+2025-09-30 17:14:46,836 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-30 17:14:46,848 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:46] "GET / HTTP/1.1" 200 -
+2025-09-30 17:14:46,902 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:14:51,243 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:51] "GET /upload HTTP/1.1" 200 -
+2025-09-30 17:14:51,276 - INFO - 127.0.0.1 - - [30/Sep/2025 17:14:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:04,165 - INFO - File uploaded: 626194-doraemon-desktop-wallpaper-top-free-doraemon-desktop-background.jpg by Pragnesh
+2025-09-30 17:15:04,167 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:04] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-09-30 17:15:04,207 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:04] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:15:04,243 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:06,367 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:06] "GET /update/1 HTTP/1.1" 200 -
+2025-09-30 17:15:06,390 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:13,262 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:13] "[32mPOST /update/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:15:13,279 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:13] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:15:13,308 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:16,659 - INFO - Document deleted: Doremon by Pragnesh
+2025-09-30 17:15:16,664 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:16] "[32mPOST /delete/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:15:16,683 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:16] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:15:16,746 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:18,042 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:18] "GET / HTTP/1.1" 200 -
+2025-09-30 17:15:18,071 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:19,798 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:19] "GET /reset-password HTTP/1.1" 200 -
+2025-09-30 17:15:19,855 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:21,821 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:21] "GET / HTTP/1.1" 200 -
+2025-09-30 17:15:21,851 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:15:25,920 - INFO - User logged out: Pragnesh
+2025-09-30 17:15:25,922 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-30 17:15:25,933 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:25] "GET / HTTP/1.1" 200 -
+2025-09-30 17:15:25,966 - INFO - 127.0.0.1 - - [30/Sep/2025 17:15:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:16:27,115 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:16:27,115 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:16:27,119 - INFO -  * Restarting with stat
+2025-09-30 17:16:29,199 - WARNING -  * Debugger is active!
+2025-09-30 17:16:29,207 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:16:29,523 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:29] "GET / HTTP/1.1" 200 -
+2025-09-30 17:16:29,771 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:16:31,982 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:31] "GET /login HTTP/1.1" 200 -
+2025-09-30 17:16:32,010 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:16:40,206 - INFO - User logged in: Pragnesh
+2025-09-30 17:16:40,208 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-30 17:16:40,221 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:40] "GET / HTTP/1.1" 200 -
+2025-09-30 17:16:40,280 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:16:45,355 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:45] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:16:45,386 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:16:47,212 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:47] "GET / HTTP/1.1" 200 -
+2025-09-30 17:16:47,245 - INFO - 127.0.0.1 - - [30/Sep/2025 17:16:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:01,716 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:18:01,718 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:18:01,724 - INFO -  * Restarting with stat
+2025-09-30 17:18:03,770 - WARNING -  * Debugger is active!
+2025-09-30 17:18:03,775 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:18:04,097 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:04] "GET / HTTP/1.1" 200 -
+2025-09-30 17:18:04,333 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:09,188 - INFO - User logged out: Pragnesh
+2025-09-30 17:18:09,191 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:09] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-30 17:18:09,202 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:09] "GET / HTTP/1.1" 200 -
+2025-09-30 17:18:09,233 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:12,334 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:12] "GET /login HTTP/1.1" 200 -
+2025-09-30 17:18:12,363 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:21,184 - INFO - User logged in: Pragnesh
+2025-09-30 17:18:21,186 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-30 17:18:21,195 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:21] "GET / HTTP/1.1" 200 -
+2025-09-30 17:18:21,237 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:29,969 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:29] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:18:30,001 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:31,085 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:31] "GET /upload HTTP/1.1" 200 -
+2025-09-30 17:18:31,115 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:45,718 - INFO - File uploaded: 729491476_fhkxxxxx3m_A1.pdf by Pragnesh
+2025-09-30 17:18:45,719 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:45] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-09-30 17:18:45,732 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:45] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:18:45,768 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:18:48,909 - INFO - Document deleted: qwer by Pragnesh
+2025-09-30 17:18:48,911 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:48] "[32mPOST /delete/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:18:49,019 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:49] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:18:49,089 - INFO - 127.0.0.1 - - [30/Sep/2025 17:18:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:19:55,962 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:19:55,963 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:19:55,966 - INFO -  * Restarting with stat
+2025-09-30 17:19:57,697 - WARNING -  * Debugger is active!
+2025-09-30 17:19:57,702 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:19:57,992 - INFO - 127.0.0.1 - - [30/Sep/2025 17:19:57] "GET / HTTP/1.1" 200 -
+2025-09-30 17:19:58,186 - INFO - 127.0.0.1 - - [30/Sep/2025 17:19:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:20:45,603 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:45] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:20:45,633 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:20:47,260 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:47] "GET / HTTP/1.1" 200 -
+2025-09-30 17:20:47,295 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:20:48,888 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:48] "GET /upload HTTP/1.1" 200 -
+2025-09-30 17:20:48,915 - INFO - 127.0.0.1 - - [30/Sep/2025 17:20:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:07,524 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:22:07,525 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:22:07,528 - INFO -  * Restarting with stat
+2025-09-30 17:22:09,459 - WARNING -  * Debugger is active!
+2025-09-30 17:22:09,465 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:22:09,756 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:09] "GET / HTTP/1.1" 200 -
+2025-09-30 17:22:09,975 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:14,112 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:14] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:22:14,142 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:15,270 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:15] "GET /upload HTTP/1.1" 200 -
+2025-09-30 17:22:15,302 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:29,483 - INFO - File uploaded: 1735652853094.jpg by Pragnesh
+2025-09-30 17:22:29,484 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:29] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-09-30 17:22:29,500 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:29] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:22:29,541 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:32,133 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:32] "GET /download/1 HTTP/1.1" 200 -
+2025-09-30 17:22:33,995 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:33] "GET /update/1 HTTP/1.1" 200 -
+2025-09-30 17:22:34,022 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:40,567 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:40] "[32mPOST /update/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:22:40,583 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:40] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:22:40,617 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:42,513 - INFO - Document deleted: 1 by Pragnesh
+2025-09-30 17:22:42,514 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:42] "[32mPOST /delete/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:22:42,528 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:42] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:22:42,558 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:45,528 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:45] "GET / HTTP/1.1" 200 -
+2025-09-30 17:22:45,570 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:50,051 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:50] "GET /reset-password HTTP/1.1" 200 -
+2025-09-30 17:22:50,129 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:51,536 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:51] "GET / HTTP/1.1" 200 -
+2025-09-30 17:22:51,568 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:22:52,656 - INFO - User logged out: Pragnesh
+2025-09-30 17:22:52,657 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:52] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-30 17:22:52,669 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:52] "GET / HTTP/1.1" 200 -
+2025-09-30 17:22:52,700 - INFO - 127.0.0.1 - - [30/Sep/2025 17:22:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:03,810 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-09-30 17:26:03,810 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:26:03,813 - INFO -  * Restarting with stat
+2025-09-30 17:26:07,178 - WARNING -  * Debugger is active!
+2025-09-30 17:26:07,187 - INFO -  * Debugger PIN: 136-403-880
+2025-09-30 17:26:07,615 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:07] "GET / HTTP/1.1" 200 -
+2025-09-30 17:26:07,929 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:10,578 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:10] "GET /login HTTP/1.1" 200 -
+2025-09-30 17:26:10,610 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:18,521 - INFO - User logged in: Pragnesh
+2025-09-30 17:26:18,522 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-30 17:26:18,535 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:18] "GET / HTTP/1.1" 200 -
+2025-09-30 17:26:18,576 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:21,840 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:21] "GET /upload HTTP/1.1" 200 -
+2025-09-30 17:26:21,871 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:30,120 - INFO - File uploaded: 1000222163.jpg by Pragnesh
+2025-09-30 17:26:30,121 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:30] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-09-30 17:26:30,161 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:30] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:26:30,197 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:32,966 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:32] "GET /update/1 HTTP/1.1" 200 -
+2025-09-30 17:26:32,991 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:37,744 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:37] "[32mPOST /update/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:26:37,764 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:37] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:26:37,797 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-30 17:26:38,919 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:38] "GET /download/1 HTTP/1.1" 200 -
+2025-09-30 17:26:38,953 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:38] "[35m[1mGET /download/1 HTTP/1.1[0m" 206 -
+2025-09-30 17:26:38,961 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:38] "[35m[1mGET /download/1 HTTP/1.1[0m" 206 -
+2025-09-30 17:26:41,507 - INFO - Document deleted: 1 by Pragnesh
+2025-09-30 17:26:41,509 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:41] "[32mPOST /delete/1 HTTP/1.1[0m" 302 -
+2025-09-30 17:26:41,525 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:41] "GET /documents HTTP/1.1" 200 -
+2025-09-30 17:26:41,563 - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -

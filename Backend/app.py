@@ -69,8 +69,10 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=150)])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=3, max=150)])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     role = SelectField('Role', choices=[('user','User'),('admin','Admin')])
     submit = SubmitField('Register')
+
 
 class ResetPasswordForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=150)])
@@ -114,6 +116,10 @@ def home():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        if not form.username.data or not form.password.data:
+            flash('Please enter both username and password', 'danger')
+            return redirect(url_for('login'))
+
         user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user, remember=True)
@@ -123,6 +129,7 @@ def login():
         else:
             flash('Invalid credentials', 'danger')
     return render_template('login.html', form=form)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -141,6 +148,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -156,31 +164,44 @@ def upload():
     form = DocumentForm()
     if form.validate_on_submit():
         file = form.file.data
-        if not file or not allowed_file(file.filename):
-            flash('Invalid or missing file', 'danger')
+        if not file:
+            flash('No file selected', 'danger')
             return redirect(request.url)
+        if not allowed_file(file.filename):
+            flash('Invalid file type! Only PDF, DOCX, TXT, XLSX, PPTX, JPG, PNG allowed.', 'danger')
+            return redirect(request.url)
+
         filename = secure_filename(file.filename)
-        # Avoid filename collision
         save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+        # Avoid filename collision
         counter = 1
         base, ext = os.path.splitext(filename)
         while os.path.exists(save_path):
             filename = f"{base}_{counter}{ext}"
             save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             counter += 1
+
         file.save(save_path)
 
         # Versioning
         existing_doc = Document.query.filter_by(title=form.title.data).order_by(Document.version.desc()).first()
         version = existing_doc.version + 1 if existing_doc else 1
 
-        new_doc = Document(title=form.title.data, filename=filename, uploader_id=current_user.id, tags=form.tags.data, version=version)
+        new_doc = Document(
+            title=form.title.data,
+            filename=filename,
+            uploader_id=current_user.id,
+            tags=form.tags.data,
+            version=version
+        )
         db.session.add(new_doc)
         db.session.commit()
         flash('File uploaded successfully', 'success')
         logging.info(f'File uploaded: {filename} by {current_user.username}')
         return redirect(url_for('documents'))
     return render_template('upload.html', form=form)
+
 
 # ---------------- Document List ----------------
 @app.route('/documents')
@@ -189,12 +210,18 @@ def documents():
     page = int(request.args.get('page', 1))
     per_page = 5
     query = Document.query
+
+    # Normal users see only their own documents
+    if current_user.role != 'admin':
+        query = query.filter_by(uploader_id=current_user.id)
+
     search_title = request.args.get('title')
     search_tags = request.args.get('tags')
     if search_title:
         query = query.filter(Document.title.ilike(f'%{search_title}%'))
     if search_tags:
         query = query.filter(Document.tags.ilike(f'%{search_tags}%'))
+
     total = query.count()
     docs = query.order_by(Document.upload_date.desc()).offset((page-1)*per_page).limit(per_page).all()
     total_pages = (total // per_page) + (1 if total % per_page > 0 else 0)
@@ -207,33 +234,43 @@ def documents():
 @login_required
 def download(doc_id):
     doc = Document.query.get_or_404(doc_id)
+    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
+        flash('Permission denied!', 'danger')
+        return redirect(url_for('documents'))
     return send_from_directory(app.config['UPLOAD_FOLDER'], doc.filename, as_attachment=True)
+
 
 # ---------------- Update Document ----------------
 @app.route('/update/<int:doc_id>', methods=['GET', 'POST'])
 @login_required
 def update_document(doc_id):
     doc = Document.query.get_or_404(doc_id)
-    if current_user.id != doc.uploader_id and current_user.role != 'admin':
-        flash('Permission denied', 'danger')
+    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
+        flash('Permission denied!', 'danger')
         return redirect(url_for('documents'))
+
     form = DocumentForm()
     if form.validate_on_submit():
         doc.title = form.title.data
         doc.tags = form.tags.data
+
         if form.file.data:
             file = form.file.data
             filename = secure_filename(file.filename)
             save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+            # Avoid filename collision
             counter = 1
             base, ext = os.path.splitext(filename)
             while os.path.exists(save_path):
                 filename = f"{base}_{counter}{ext}"
                 save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 counter += 1
+
             file.save(save_path)
             doc.filename = filename
             doc.version += 1
+
         db.session.commit()
         flash('Document updated successfully', 'success')
         return redirect(url_for('documents'))
@@ -242,14 +279,16 @@ def update_document(doc_id):
         form.tags.data = doc.tags
     return render_template('update_document.html', form=form, doc=doc)
 
+
 # ---------------- Delete Document ----------------
 @app.route('/delete/<int:doc_id>', methods=['POST'])
 @login_required
 def delete_document(doc_id):
     doc = Document.query.get_or_404(doc_id)
-    if current_user.id != doc.uploader_id and current_user.role != 'admin':
+    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
         flash('Permission denied', 'danger')
         return redirect(url_for('documents'))
+
     try:
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], doc.filename)
         if os.path.exists(file_path):
