@@ -1,5 +1,4 @@
-import os
-import webbrowser
+import os, webbrowser, logging
 from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm, CSRFProtect
@@ -11,36 +10,30 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from functools import wraps
 from datetime import datetime
-import logging
 
-# ================= PATH SETUP =================
+# ================= PATH =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'frontend', 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'frontend', 'static')
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(os.path.join(BASE_DIR, 'database'), exist_ok=True)
+ALLOWED_EXTENSIONS = {'pdf','docx','txt','xlsx','pptx','jpg','png'}
 
-ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt', 'xlsx', 'pptx', 'jpg', 'png'}
-
-# ================= APP SETUP =================
+# ================= APP =================
 app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
-app.config['SECRET_KEY'] = 'thisissecretkey123'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'database', 'app.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['REMEMBER_COOKIE_DURATION'] = 86400  # 1 day
-
+app.config.update(
+    SECRET_KEY='thisissecretkey123',
+    SQLALCHEMY_DATABASE_URI='sqlite:///' + os.path.join(BASE_DIR, 'database', 'app.db'),
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
+    UPLOAD_FOLDER=UPLOAD_FOLDER,
+    REMEMBER_COOKIE_DURATION=86400
+)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-csrf = CSRFProtect(app)  # CSRF enabled
-
-# ================= LOGIN MANAGER =================
-login_manager = LoginManager()
-login_manager.init_app(app)
+csrf = CSRFProtect(app)
+login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-
-# ================= LOGGING =================
 logging.basicConfig(filename='backend.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # ================= MODELS =================
@@ -62,92 +55,78 @@ class Document(db.Model):
 
 # ================= FORMS =================
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=150)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=3, max=150)])
+    username = StringField('Username', validators=[DataRequired(), Length(3,150)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(3,150)])
     submit = SubmitField('Login')
 
 class RegisterForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=150)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=3, max=150)])
+    username = StringField('Username', validators=[DataRequired(), Length(3,150)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(3,150)])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     role = SelectField('Role', choices=[('user','User'),('admin','Admin')])
     submit = SubmitField('Register')
 
-
 class ResetPasswordForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=150)])
-    new_password = PasswordField('New Password', validators=[DataRequired(), Length(min=3, max=150)])
+    username = StringField('Username', validators=[DataRequired(), Length(3,150)])
+    new_password = PasswordField('New Password', validators=[DataRequired(), Length(3,150)])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('new_password')])
     submit = SubmitField('Reset Password')
 
 class DocumentForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     tags = StringField('Tags')
-    file = FileField('File', validators=[DataRequired()])
+    file = FileField('File')
     submit = SubmitField('Submit')
 
-class DummyForm(FlaskForm):
-    pass  # For CSRF token in delete forms
+class DummyForm(FlaskForm): pass  # CSRF token for delete
 
-# ================= LOGIN MANAGER =================
+# ================= LOGIN =================
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-# ================= HELPER FUNCTIONS =================
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def load_user(uid): return User.query.get(int(uid))
 
 def admin_required(f):
     @wraps(f)
-    def decorated_function(*args, **kwargs):
+    def wrap(*args, **kwargs):
         if not current_user.is_authenticated or current_user.role != 'admin':
             flash('Admin access required!', 'danger')
             return redirect(url_for('login'))
         return f(*args, **kwargs)
-    return decorated_function
+    return wrap
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
 
 # ================= ROUTES =================
 @app.route('/')
-def home():
-    return render_template('home.html')
+def home(): return render_template('home.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if not form.username.data or not form.password.data:
-            flash('Please enter both username and password', 'danger')
-            return redirect(url_for('login'))
-
         user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user, remember=True)
             flash('Logged in successfully!', 'success')
             logging.info(f'User logged in: {user.username}')
             return redirect(url_for('home'))
-        else:
-            flash('Invalid credentials', 'danger')
+        flash('Invalid credentials', 'danger')
     return render_template('login.html', form=form)
 
-
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        existing_user = User.query.filter_by(username=form.username.data).first()
-        if existing_user:
-            flash('Username already exists', 'danger')
+        if User.query.filter_by(username=form.username.data).first():
+            flash('Username exists', 'danger')
         else:
             hashed_pw = generate_password_hash(form.password.data)
-            new_user = User(username=form.username.data, password=hashed_pw, role=form.role.data)
-            db.session.add(new_user)
-            db.session.commit()
-            flash('Registration successful! Please login.', 'success')
-            logging.info(f'New user registered: {new_user.username}, role: {new_user.role}')
+            user = User(username=form.username.data, password=hashed_pw, role=form.role.data)
+            db.session.add(user); db.session.commit()
+            flash('Registration successful!', 'success')
+            logging.info(f'New user: {user.username}, role: {user.role}')
             return redirect(url_for('login'))
     return render_template('register.html', form=form)
-
 
 @app.route('/logout')
 @login_required
@@ -157,185 +136,108 @@ def logout():
     flash('Logged out successfully', 'info')
     return redirect(url_for('home'))
 
-# ---------------- Upload Document ----------------
-@app.route('/upload', methods=['GET', 'POST'])
+# ---------------- Document Helpers ----------------
+def save_file(file):
+    filename = secure_filename(file.filename)
+    save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    base, ext = os.path.splitext(filename)
+    counter = 1
+    while os.path.exists(save_path):
+        filename = f"{base}_{counter}{ext}"
+        save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        counter += 1
+    file.save(save_path)
+    return filename
+
+# ---------------- Upload / Update ----------------
+@app.route('/upload', methods=['GET','POST'])
 @login_required
 def upload():
     form = DocumentForm()
-    if form.validate_on_submit():
-        file = form.file.data
-        if not file:
-            flash('No file selected', 'danger')
-            return redirect(request.url)
-        if not allowed_file(file.filename):
-            flash('Invalid file type! Only PDF, DOCX, TXT, XLSX, PPTX, JPG, PNG allowed.', 'danger')
-            return redirect(request.url)
-
-        filename = secure_filename(file.filename)
-        save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-        # Avoid filename collision
-        counter = 1
-        base, ext = os.path.splitext(filename)
-        while os.path.exists(save_path):
-            filename = f"{base}_{counter}{ext}"
-            save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            counter += 1
-
-        file.save(save_path)
-
-        # Versioning
+    if form.validate_on_submit() and form.file.data and allowed_file(form.file.data.filename):
+        filename = save_file(form.file.data)
         existing_doc = Document.query.filter_by(title=form.title.data).order_by(Document.version.desc()).first()
-        version = existing_doc.version + 1 if existing_doc else 1
-
-        new_doc = Document(
-            title=form.title.data,
-            filename=filename,
-            uploader_id=current_user.id,
-            tags=form.tags.data,
-            version=version
-        )
-        db.session.add(new_doc)
-        db.session.commit()
-        flash('File uploaded successfully', 'success')
+        version = existing_doc.version+1 if existing_doc else 1
+        doc = Document(title=form.title.data, filename=filename, uploader_id=current_user.id, tags=form.tags.data, version=version)
+        db.session.add(doc); db.session.commit()
+        flash('File uploaded successfully','success')
         logging.info(f'File uploaded: {filename} by {current_user.username}')
         return redirect(url_for('documents'))
     return render_template('upload.html', form=form)
 
-
-# ---------------- Document List ----------------
 @app.route('/documents')
 @login_required
 def documents():
-    page = int(request.args.get('page', 1))
+    page = int(request.args.get('page',1))
     per_page = 5
-    query = Document.query
+    query = Document.query.filter_by(uploader_id=current_user.id) if current_user.role!='admin' else Document.query
+    title = request.args.get('title'); tags = request.args.get('tags')
+    if title: query = query.filter(Document.title.ilike(f'%{title}%'))
+    if tags: query = query.filter(Document.tags.ilike(f'%{tags}%'))
+    total = query.count(); docs = query.order_by(Document.upload_date.desc()).offset((page-1)*per_page).limit(per_page).all()
+    return render_template('documents.html', documents=docs, page=page, total_pages=(total//per_page)+(1 if total%per_page>0 else 0), form=DummyForm())
 
-    # Normal users see only their own documents
-    if current_user.role != 'admin':
-        query = query.filter_by(uploader_id=current_user.id)
-
-    search_title = request.args.get('title')
-    search_tags = request.args.get('tags')
-    if search_title:
-        query = query.filter(Document.title.ilike(f'%{search_title}%'))
-    if search_tags:
-        query = query.filter(Document.tags.ilike(f'%{search_tags}%'))
-
-    total = query.count()
-    docs = query.order_by(Document.upload_date.desc()).offset((page-1)*per_page).limit(per_page).all()
-    total_pages = (total // per_page) + (1 if total % per_page > 0 else 0)
-
-    form = DummyForm()  # CSRF token for delete form
-    return render_template('documents.html', documents=docs, page=page, total_pages=total_pages, form=form)
-
-# ---------------- Download Document ----------------
 @app.route('/download/<int:doc_id>')
 @login_required
 def download(doc_id):
     doc = Document.query.get_or_404(doc_id)
-    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
-        flash('Permission denied!', 'danger')
-        return redirect(url_for('documents'))
+    if current_user.role!='admin' and current_user.id!=doc.uploader_id: flash('Permission denied!', 'danger'); return redirect(url_for('documents'))
     return send_from_directory(app.config['UPLOAD_FOLDER'], doc.filename, as_attachment=True)
 
-
-# ---------------- Update Document ----------------
-@app.route('/update/<int:doc_id>', methods=['GET', 'POST'])
+@app.route('/update/<int:doc_id>', methods=['GET','POST'])
 @login_required
 def update_document(doc_id):
     doc = Document.query.get_or_404(doc_id)
-    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
-        flash('Permission denied!', 'danger')
-        return redirect(url_for('documents'))
-
+    if current_user.role!='admin' and current_user.id!=doc.uploader_id: flash('Permission denied!', 'danger'); return redirect(url_for('documents'))
     form = DocumentForm()
     if form.validate_on_submit():
-        doc.title = form.title.data
-        doc.tags = form.tags.data
-
-        if form.file.data:
-            file = form.file.data
-            filename = secure_filename(file.filename)
-            save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-            # Avoid filename collision
-            counter = 1
-            base, ext = os.path.splitext(filename)
-            while os.path.exists(save_path):
-                filename = f"{base}_{counter}{ext}"
-                save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-                counter += 1
-
-            file.save(save_path)
-            doc.filename = filename
-            doc.version += 1
-
-        db.session.commit()
-        flash('Document updated successfully', 'success')
+        doc.title = form.title.data; doc.tags = form.tags.data
+        if form.file.data: doc.filename = save_file(form.file.data); doc.version += 1
+        db.session.commit(); flash('Document updated successfully','success')
         return redirect(url_for('documents'))
-    elif request.method == 'GET':
-        form.title.data = doc.title
-        form.tags.data = doc.tags
+    elif request.method=='GET': form.title.data = doc.title; form.tags.data = doc.tags
     return render_template('update_document.html', form=form, doc=doc)
 
-
-# ---------------- Delete Document ----------------
 @app.route('/delete/<int:doc_id>', methods=['POST'])
 @login_required
 def delete_document(doc_id):
     doc = Document.query.get_or_404(doc_id)
-    if current_user.role != 'admin' and current_user.id != doc.uploader_id:
-        flash('Permission denied', 'danger')
-        return redirect(url_for('documents'))
-
+    if current_user.role!='admin' and current_user.id!=doc.uploader_id: flash('Permission denied','danger'); return redirect(url_for('documents'))
     try:
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], doc.filename)
-        if os.path.exists(file_path):
-            os.remove(file_path)
-        db.session.delete(doc)
-        db.session.commit()
-        flash('Document deleted successfully', 'success')
+        path = os.path.join(app.config['UPLOAD_FOLDER'], doc.filename)
+        if os.path.exists(path): os.remove(path)
+        db.session.delete(doc); db.session.commit()
+        flash('Document deleted successfully','success')
         logging.info(f'Document deleted: {doc.title} by {current_user.username}')
-    except Exception as e:
-        flash('Error deleting document', 'danger')
-        logging.error(f'Error deleting document {doc.title}: {e}')
+    except Exception as e: flash('Error deleting document','danger'); logging.error(f'{e}')
     return redirect(url_for('documents'))
 
-# ---------------- Reset Password ----------------
-@app.route('/reset-password', methods=['GET', 'POST'])
-@admin_required
+@app.route('/reset-password', methods=['GET','POST'])
 def reset_password():
     form = ResetPasswordForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if not user:
-            flash('User not found', 'danger')
-            return redirect(url_for('reset_password'))
-        user.password = generate_password_hash(form.new_password.data)
-        db.session.commit()
-        flash(f"Password for {user.username} reset successfully!", 'success')
-        logging.info(f'Password reset for: {user.username} by {current_user.username}')
-        return redirect(url_for('home'))
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).first()
+            if not user:
+                flash('User not found', 'danger')
+            else:
+                user.password = generate_password_hash(form.new_password.data)
+                db.session.commit()
+                flash("Password reset successfully!", 'success')
+                return redirect(url_for('login'))
+        else:
+            flash("Form validation failed", "danger")
+
     return render_template('reset_password.html', form=form)
 
-# ---------------- JSON endpoint ----------------
+
 @app.route('/api/documents')
 @login_required
-def api_documents():
-    docs = Document.query.all()
-    data = []
-    for d in docs:
-        data.append({
-            'id': d.id,
-            'title': d.title,
-            'filename': d.filename,
-            'uploader_id': d.uploader_id,
-            'tags': d.tags,
-            'upload_date': d.upload_date.isoformat(),
-            'version': d.version
-        })
-    return jsonify(data)
+def api_documents(): return jsonify([{
+    'id': d.id,'title': d.title,'filename': d.filename,'uploader_id':d.uploader_id,
+    'tags':d.tags,'upload_date':d.upload_date.isoformat(),'version':d.version
+} for d in Document.query.all()])
 
 # ================= ERROR HANDLING =================
 @app.errorhandler(404)
@@ -347,10 +249,9 @@ def internal_error(e):
     db.session.rollback()
     return render_template('500.html'), 500
 
-# ================= RUN APP =================
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
-        webbrowser.open("http://127.0.0.1:5000/")
+
+# ================= RUN =================
+if __name__=='__main__':
+    with app.app_context(): db.create_all()
+    if os.environ.get('WERKZEUG_RUN_MAIN')=='true': webbrowser.open("http://127.0.0.1:5000/")
     app.run(debug=True)
